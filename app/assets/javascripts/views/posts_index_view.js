@@ -20,7 +20,8 @@ Journal.Views.PostsIndexView = Backbone.View.extend({
       $ul.append($li);
     });
 
-    this.$el.html($ul);
+    this.$el.html("<h1>Posts</h1>")
+    this.$el.append($ul);
 
     return this
   },
