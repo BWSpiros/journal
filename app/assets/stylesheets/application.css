@@ -11,3 +11,8 @@
  *= require_self
  *= require_tree .
  */
+
+
+.delete_button {
+  color: red;
+}

@@ -1,0 +1,22 @@
+<h1>Posts</h1>
+
+<div id="content"></div>
+
+<script>
+
+var postsIndexView;
+
+ajaxData = {
+  url: "/posts",
+  type: "GET",
+  dataType: "json",
+  success: function(response){
+    var posts = new Journal.Collections.Posts(response);
+    postsIndexView = new Journal.Views.PostsIndexView({collection: posts});
+    $("#content").html(postsIndexView.render().el);
+  }
+}
+
+$.ajax(ajaxData);
+
+</script>
