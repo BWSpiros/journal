@@ -20,6 +20,7 @@ Journal.Routers.PostsRouter = Backbone.Router.extend({
 
   showPost: function(id){
 
+    console.log("showpost router call")
     var post = this.posts.get(id);
     var showView = new Journal.Views.PostsShowView(post);
 
