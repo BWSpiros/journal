@@ -11,6 +11,7 @@
 // GO AFTER THE REQUIRES BELOW.
 //
 //= require jquery
+//= require jquery.serializeJSON.min
 //= require jquery_ujs
 //= require underscore
 //= require backbone

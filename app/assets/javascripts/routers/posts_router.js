@@ -1,14 +1,16 @@
 Journal.Routers.PostsRouter = Backbone.Router.extend({
   initialize: function($rootEl, posts){
     this.$rootEl = $rootEl;
-    this.posts = posts
+    this.posts = posts;
 
-    console.log("Router initialized")
   },
 
   routes: {
     "": "postsIndex",
-    "posts/:id": "showPost"
+    "posts/new": "newPost",
+    //no post/:id's above this point
+    "posts/:id": "showPost",
+    "posts/:id/edit": "editPost"
   },
 
   postsIndex: function() {
@@ -26,6 +28,23 @@ Journal.Routers.PostsRouter = Backbone.Router.extend({
 
     this.$rootEl.empty();
     this.$rootEl.html(showView.render().$el);
+  },
+
+  newPost: function() {
+
+    var newView = new Journal.Views.PostsNew();
+
+    this.$rootEl.empty();
+    this.$rootEl.html(newView.render().$el);
+  },
+
+  editPost: function(id) {
+
+    var post = this.posts.get(id);
+    var editView = new Journal.Views.PostsEdit(post)
+
+    this.$rootEl.empty();
+    this.$rootEl.html(editView.render().$el);
   }
 
 });

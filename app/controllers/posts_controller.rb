@@ -21,9 +21,9 @@ class PostsController < ApplicationController
     @post = Post.new(params[:post])
 
     if @post.save
-      redirect_to post_url(@post)
+      render json: @posts
     else
-      redirect_to root_url
+      # render something
     end
   end
 

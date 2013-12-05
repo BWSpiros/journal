@@ -11,15 +11,17 @@ Journal.Views.PostsIndexView = Backbone.View.extend({
 
     _.each(this.collection.models, function(post){
       var $li = $("<li></li>");
+      var $button = $("<button class='delete_button'>X</button>");
+      $button.attr("data-id", post.get("id"));
+      $li.html($button);
+
+
       $a = $('<a href="#/posts/'+post.get("id")+'" class="post-link"></a>');
       $a.text(post.get("title"));
       $a.attr("data-id", post.get("id"));
-      $li.html($a);
+      $li.append($a);
 
-      var $button = $("<button class='delete_button'>X</button>");
-      $button.attr("data-id", post.get("id"));
 
-      $li.append($button);
       $ul.append($li);
     });
 
@@ -30,8 +32,7 @@ Journal.Views.PostsIndexView = Backbone.View.extend({
   },
 
   events: {
-    'click .delete_button' : "deletePost",
-    // 'click .post-link' : "navigateToPost"
+    'click .delete_button' : "deletePost"
   },
 
   deletePost: function(event) {
@@ -40,15 +41,6 @@ Journal.Views.PostsIndexView = Backbone.View.extend({
     var postToKill = $(event.target).attr("data-id");
     self.collection.get(postToKill).destroy();
   }
-
-  // navigateToPost: function(event) {
-  //   var id = $(event.target).attr("data-id");
-  //   console.log(this.collection.get(id))
-  //   var showView = new Journal.Views.PostsShowView(this.collection.get(id));
-  //   $("#content").empty();
-  //   $("#content").html(showView.render().$el);
-  // }
-
 
 });
 

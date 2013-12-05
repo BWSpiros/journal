@@ -1,0 +1,21 @@
+<form id="post_form">
+  <p>
+    <label>Title:<br>
+      <input type="text"
+             name="post[title]"
+             id="post_title"
+             value="<%= post.get("title")%>">
+    </label>
+  </p>
+
+  <p>
+    <label>Body:<br>
+      <textarea name="post[body]"
+                id="post_body"><%= post.get("body") %></textarea>
+    </label>
+  </p>
+
+  <p>
+    <button id='submit_button'>Submit</button>
+  </p>
+<form>
